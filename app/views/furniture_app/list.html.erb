@@ -1,0 +1,125 @@
+<!-- <h1>Mallory Furnitures</h1>
+<h2>Furniture Display listing</h2>
+
+
+<p><%= link_to 'Home', '/' %></p>
+
+  <table class="table table-striped">
+
+
+  <thead>
+    <tr>
+      <th>Pid</th>
+      <th>Image</th>
+      <th>Item</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Clearance</th>
+      <th>Condition</th>
+      <th>Quantity</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @furnitures.each do |furniture| %>
+      <% if furniture.quantity.to_i >  0 %>
+
+      <tr>
+        <td><%= furniture.pid %></td>
+    <td><%= image_tag furniture.img_name %></td>
+        <td><%= furniture.item %></td>
+        <td><%= furniture.description %></td>
+        <td>$<%= furniture.price %></td>
+        <td>$<%= furniture.clearance %></td>
+        <td><%= furniture.condition %></td>
+        <td><%= furniture.quantity %></td>
+        <td><%= furniture.category %></td>
+
+        <td>
+          <%= link_to "View Details", "/furniture_app/#{furniture.pid}" %>
+        </td>
+      </tr>
+      <%end%>
+    <% end %>
+
+  </tbody>
+</table> -->
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="/">Mallory's Furniture</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                <li class="hidden">
+                    <a class="page-scroll" href="#page-top"></a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#about">About</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#services">Services</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+
+<br>
+<br>
+<br>
+
+<hr>
+
+<div class ="container">
+
+
+
+<div class="row">
+  <div class="col-md-12 col-sm-4">
+  <% @furnitures.each do |furniture| %>
+    <% if furniture.quantity.to_i >  0 %>
+      <div class="col-md-4 col-sm-8">
+
+			    <div class="product">
+            <h5><%= furniture.clearance %></h5>
+
+                        <div class ="test"> <%= image_tag furniture.img_name %> </div>
+					<div class="name"><%=link_to furniture.item, "/furniture_app/#{furniture.pid}" %></a></div>
+
+										<div class="price">
+					  					  <p>$<%= furniture.price %></p>
+
+					  					</div>
+
+				    <div class="addcart">
+					<input type="button" value="Add to Cart" onclick="return addToCart('35');" class="button btn btn-small">
+				  </div>
+
+
+
+				</div>
+
+			</div>
+      <%end%>
+    <% end %>
+    </div>
+  </div>
+</div>
